@@ -7,8 +7,8 @@ histogram = zeros(256, 1);
 
 for i = 1:rows
     for j = 1:cols
-        intensity = originalImage(i, j) + 1;  % Adjust for 1-based indexing
-        histogram(intensity) = histogram(intensity) + 1;
+        intensity = originalImage(i, j)+1;  % Adjust for 1-based indexing
+        histogram(intensity) = histogram(intensity)+1;
     end
 end
 
@@ -35,7 +35,7 @@ equalizedImage = zeros(rows, cols);
 for i = 1:rows
     for j = 1:cols
         intensity = originalImage(i, j) + 1;  % Adjust for 1-based indexing
-        equalizedImage(i, j) = cdfEqualized(intensity);
+        equalizedImage(i, j) = round(cdfEqualized(intensity));
     end
 end
 
