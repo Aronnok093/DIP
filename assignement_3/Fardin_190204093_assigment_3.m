@@ -9,6 +9,12 @@ end
 % Convert the image to double
 originalImage = double(originalImage);
 
+% Display the original image
+figure;
+subplot(1, 2, 1);
+imshow(uint8(originalImage));
+title('Original Image');
+
 % Prompt the user for the sigma value
 sigma = input('Enter the sigma value: ');
 
@@ -30,15 +36,15 @@ kernel = kernel / sum(kernel(:));
 % Apply convolution without using built-in functions
 filteredImage = convolution(originalImage, kernel);
 
-% Display both images in the same subplot
-figure;
-subplot(1, 2, 1);
-imshow(uint8(originalImage));
-title('Original Image');
-
+% Display the filtered image
 subplot(1, 2, 2);
 imshow(uint8(filteredImage));
 title('Filtered Image');
+
+% Save the filtered image
+path = 'C:\Users\kfard\OneDrive\Desktop\fardin\output.jpg';
+imwrite(uint8(filteredImage),path,'jpg');
+disp(['Filtered image saved as ' outputFilename]);
 
 function outputImage = convolution(inputImage, kernel)
     [rows, cols] = size(inputImage);
